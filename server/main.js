@@ -2,14 +2,23 @@ Meteor.startup(function () {
   twilio = Twilio(Meteor.settings.Twilio.sid,
                   Meteor.settings.Twilio.auth);
 
-  twilio.listSms({
-    // from:'+16042272151'
-  }, function (err, responseData) {
-    responseData.smsMessages.forEach(function(message) {
-        console.log('Message sent on: '+message.dateCreated.toLocaleDateString()+message.from+message.to+message.status);
-        console.log(message.body);
-    });
-  });
+  // twilio.listSms({
+  //   // from:'+16042272151'
+  // }, function (err, responseData) {
+  //   responseData.smsMessages.forEach(function(message) {
+  //       console.log('Msg sent on: '+ message.dateCreated.toLocaleDateString() + ' From: ' + message.from + ' To: ' + message.to + ' Status: ' + message.status);
+  //       console.log(message.body);
+  //   });
+  // });
+
+  firebase = new Firebase('https://publicdata-bitcoin.firebaseio.com/');
+
+  firebase.child("bid").on("value", showPrice);
+  firebase.child("ask").on("value", showPrice);
+
+  function showPrice(snapshot) {
+    console.log(snapshot.name() + ": " + snapshot.val());
+  }
 
   // twilio.sendSms({
   //   to:'+16045052916',

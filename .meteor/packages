@@ -9,3 +9,5 @@ insecure
 preserve-inputs
 twilio-meteor
 iron-router
+bootstrap-3
+firebase
