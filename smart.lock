@@ -2,13 +2,19 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "twilio-meteor": {}
+      "twilio-meteor": {},
+      "iron-router": {}
     },
     "packages": {
       "twilio-meteor": {
         "git": "http://github.com/andreioprisan/twilio-meteor.git",
         "tag": "v1.1.0",
         "commit": "7f36ec52fc334caf8b740320524df62afce890e1"
+      },
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "tag": "v0.6.1",
+        "commit": "4e1ee0581d68bff422a915dacb0bd30eae10fe08"
       }
     }
   }
