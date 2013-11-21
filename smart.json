@@ -1,10 +1,6 @@
 {
   "packages": {
     "twilio-meteor": {},
-    "iron-router": {},
-    "bootstrap-3": {},
-    "firebase" : {
-      "path": "/Users/yurik/code/sandbox/meteor/firebase/"
-    }
+    "bootstrap-3": {}
   }
 }

@@ -1,8 +1,3 @@
-Router.map(function() {
-  this.route('main', {path: '/'});
-x})
-
-
 Template.hello.greeting = function () {
   return "Welcome to BTCAlarm.";
 };

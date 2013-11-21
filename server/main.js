@@ -13,8 +13,8 @@ Meteor.startup(function () {
 
   firebase = new Firebase('https://publicdata-bitcoin.firebaseio.com/');
 
-  firebase.child("bid").on("value", showPrice);
-  firebase.child("ask").on("value", showPrice);
+  firebase.child("last").on("value", showPrice);
+  // firebase.child("ask").on("value", showPrice);
 
   function showPrice(snapshot) {
     console.log(snapshot.name() + ": " + snapshot.val());
