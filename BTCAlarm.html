@@ -7,7 +7,15 @@
 </body>
 
 <template name="hello">
+  {{#each messages}}
+    {{> message}}
+  {{/each}}
+
   <h1>Hello World!</h1>
   {{greeting}}
   <input type="button" value="Click" />
+</template>
+
+<template name="message">
+  {{value}}
 </template>

@@ -8,23 +8,30 @@ Meteor.startup(function () {
   // firebase.child("ask").on("value", showPrice);
 
   var previous,
-      delta = 5;
+      msg,
+      delta,
+      eps = 0.5;
 
   function showPrice(snapshot) {
     if (previous === undefined) {
       previous = snapshot;
     }
 
-    if (Math.abs(previous.val() - snapshot.val() >= delta) {
-      sendSMS('BTC is now ' + snapshot.val());
-      previous = snapshot;
+    delta = previous.val() - snapshot.val();
 
+    if (Math.abs(delta) >= eps) {
+      msg = 'BTC is now ' + snapshot.val() + ', ' + (delta > 0 ? 'down from ':'up from ') + previous.val();
+
+      sendSMS(msg);
+      previous = snapshot;
     }
 
-    // console.log(snapshot.name() + ": " + snapshot.val());
+    // Messages.insert({value: snapshot.name() + ": " + snapshot.val()})
+    console.log(snapshot.name() + ": " + snapshot.val());
   }
 
   function sendSMS(msg) {
+    Messages.insert({value: 'SMS: ' + msg});
     console.log('SMS: ' + msg);
 
     // twilio.sendSms({
@@ -44,3 +51,6 @@ Meteor.startup(function () {
 
 });
 
+Meteor.publish("messages", function () {
+  return Messages.find();
+});
