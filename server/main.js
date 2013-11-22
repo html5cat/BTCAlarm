@@ -31,7 +31,7 @@ Meteor.startup(function () {
   }
 
   function sendSMS(msg) {
-    Messages.insert({value: 'SMS: ' + msg});
+    // Messages.insert({value: 'SMS: ' + msg.toString()});
     console.log('SMS: ' + msg);
 
     // twilio.sendSms({
